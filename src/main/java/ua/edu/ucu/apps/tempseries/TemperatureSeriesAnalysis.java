@@ -2,8 +2,8 @@ package ua.edu.ucu.apps.tempseries;
 import java.util.Arrays;
 
 public class TemperatureSeriesAnalysis {
-    private double[] temperatureSeries;
     private static final double ABSOLUTE_ZERO_CELSIUS = -273;
+    private double[] temperatureSeries;
     public TemperatureSeriesAnalysis() {
         this.temperatureSeries = new double[0];
     }

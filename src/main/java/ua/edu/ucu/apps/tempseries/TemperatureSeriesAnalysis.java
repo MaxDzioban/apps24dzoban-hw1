@@ -127,10 +127,8 @@ public class TemperatureSeriesAnalysis {
     public int addTemps(double... temps) {
     for (double temp : temps) {
         if (temp < -273) {
-            throw new InputMismatchException(
-                "Temperature cannot be below " +
-                "-273°C"
-            );
+            throw new IllegalArgumentException(
+                "Temp cant be below -273");
         }
     }
     

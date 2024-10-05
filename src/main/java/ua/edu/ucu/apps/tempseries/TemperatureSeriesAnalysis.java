@@ -132,7 +132,12 @@ public class TemperatureSeriesAnalysis {
             newTemps, 
             0, 
             temperatureSeries.length);
-        System.arraycopy(temps, 0, newTemps, temperatureSeries.length, temps.length);
+        System.arraycopy(
+            temps, 
+            0, 
+            newTemps, 
+            0, 
+            temps.length);
         temperatureSeries = newTemps;
         return temperatureSeries.length;
     }

@@ -85,13 +85,13 @@ public class TemperatureSeriesAnalysis {
         return closest;
     }
 
-    public double[] findTempsLessThen(double tempValue) {
+    public double[] findTempsLessThan(double tempValue) {
         return Arrays.stream(temperatureSeries)
                      .filter(temp -> temp < tempValue)
                      .toArray();
     }
 
-    public double[] findTempsGreaterThen(double tempValue) {
+    public double[] findTempsGreaterThan(double tempValue) {
         return Arrays.stream(temperatureSeries)
                      .filter(temp -> temp > tempValue)
                      .toArray();

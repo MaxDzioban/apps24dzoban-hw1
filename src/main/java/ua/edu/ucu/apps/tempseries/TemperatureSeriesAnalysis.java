@@ -3,6 +3,7 @@ import java.util.Arrays;
 
 public class TemperatureSeriesAnalysis {
     private double[] temperatureSeries;
+    private static final double ABSOLUTE_ZERO_CELSIUS = -273;
     public TemperatureSeriesAnalysis() {
         this.temperatureSeries = new double[0];
     }
@@ -126,14 +127,16 @@ public class TemperatureSeriesAnalysis {
 
     public int addTemps(double... temps) {
     for (double temp : temps) {
-        if (temp < -273) {
+        if (temp < ABSOLUTE_ZERO_CELSIUS) {
             throw new IllegalArgumentException(
                 "Temp cant be below -273");
         }
     }
-    
+
     if (temperatureSeries.length + temps.length > temperatureSeries.length) {
-        double[] newTemps = new double[(temperatureSeries.length + temps.length) * 2];
+        double[] newTemps = new double[
+            (temperatureSeries.length + temps.length) * 2
+        ];
         System.arraycopy(
             temperatureSeries, 
             0, 
@@ -148,5 +151,5 @@ public class TemperatureSeriesAnalysis {
             temperatureSeries, 
             0, 
             temps.length);
-    return temperatureSeries.length;}
+    return temperatureSeries.length; }
 }

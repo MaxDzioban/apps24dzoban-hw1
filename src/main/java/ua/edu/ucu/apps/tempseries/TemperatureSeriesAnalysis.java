@@ -26,7 +26,7 @@ public class TemperatureSeriesAnalysis {
         double mean = average(); // use the average method
         double variance = 0;
         for (double temp : temperatureSeries) {
-            variance += Math.pow(temp - mean, 2);
+            variance += (temp - mean)*(temp - mean);
         }
         variance /= temperatureSeries.length;
         return Math.sqrt(variance);
@@ -64,8 +64,8 @@ public class TemperatureSeriesAnalysis {
         }
         double closest = temperatureSeries[0];
         for (double temp : temperatureSeries) {
-            if (Math.abs(temp) < Math.abs(closest) || 
-                (Math.abs(temp) == Math.abs(closest) && temp > closest)) {
+            if (Math.abs(temp) < Math.abs(closest) 
+                || (Math.abs(temp) == Math.abs(closest) && temp > closest)) {
                 closest = temp;
             }
         }
@@ -126,7 +126,12 @@ public class TemperatureSeriesAnalysis {
 
     public int addTemps(double... temps) {
         double[] newTemps = new double[temperatureSeries.length + temps.length];
-        System.arraycopy(temperatureSeries, 0, newTemps, 0, temperatureSeries.length);
+        System.arraycopy(
+            temperatureSeries, 
+            0, 
+            newTemps, 
+            0, 
+            temperatureSeries.length);
         System.arraycopy(temps, 0, newTemps, temperatureSeries.length, temps.length);
         temperatureSeries = newTemps;
         return temperatureSeries.length;

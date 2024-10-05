@@ -125,20 +125,30 @@ public class TemperatureSeriesAnalysis {
     }
 
     public int addTemps(double... temps) {
-        double[] newTemps = new double[temperatureSeries.length + temps.length];
+    for (double temp : temps) {
+        if (temp < -273) {
+            throw new InputMismatchException(
+                "Temperature cannot be below " +
+                "-273°C"
+            );
+        }
+    }
+    
+    if (temperatureSeries.length + temps.length > temperatureSeries.length) {
+        double[] newTemps = new double[(temperatureSeries.length + temps.length) * 2];
         System.arraycopy(
             temperatureSeries, 
             0, 
             newTemps, 
             0, 
             temperatureSeries.length);
-        System.arraycopy(
+        temperatureSeries = newTemps;
+    }
+    System.arraycopy(
             temps, 
             0, 
-            newTemps, 
+            temperatureSeries, 
             0, 
             temps.length);
-        temperatureSeries = newTemps;
-        return temperatureSeries.length;
-    }
+    return temperatureSeries.length;}
 }

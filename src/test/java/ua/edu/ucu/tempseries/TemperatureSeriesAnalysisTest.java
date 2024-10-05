@@ -47,14 +47,14 @@ public class TemperatureSeriesAnalysisTest {
     }
 
     @Test
-    public void testFindTempsLessThen() {
+    public void testFindTempsLessThan() {
         TemperatureSeriesAnalysis ts = new TemperatureSeriesAnalysis(new double[]{10, 20, 30});
         double[] result = ts.findTempsLessThen(25);
         assertArrayEquals(new double[]{10.0, 20.0}, result, 0.001);
     }
 
     @Test
-    public void testFindTempsGreaterThen() {
+    public void testFindTempsGreaterThan() {
         TemperatureSeriesAnalysis ts = new TemperatureSeriesAnalysis(new double[]{10, 20, 30});
         double[] result = ts.findTempsGreaterThen(15);
         assertArrayEquals(new double[]{20.0, 30.0}, result, 0.001);
